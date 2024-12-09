@@ -74,12 +74,7 @@ export const Main = async () => {
   application.use(enrollmentroutes);
   application.use(studentroutes);
   application.use(subjectsroutes);
-
-  logging.log("----------------------------------------");
-  logging.log("Define Routing Error");
-  logging.log("----------------------------------------");
-  application.use(routeNotFound);
-
+  
   logging.log("----------------------------------------");
   logging.log("Starting Server");
   logging.log("----------------------------------------");
