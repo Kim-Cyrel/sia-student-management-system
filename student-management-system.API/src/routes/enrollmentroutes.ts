@@ -109,7 +109,7 @@ const enrollmentController = new EnrollmentController();
  *         name: id
  *         required: true
  *         schema:
- *           type: integer
+ *           type: string
  *         description: Enrollment ID
  *     responses:
  *       200:
