@@ -275,7 +275,7 @@ const studentController = new StudentController();
  *         name: id
  *         required: true
  *         schema:
- *           type: integer
+ *           type: string
  *         description: Student ID
  *     requestBody:
  *       required: true
@@ -340,7 +340,7 @@ const studentController = new StudentController();
  *         name: id
  *         required: true
  *         schema:
- *           type: integer
+ *           type: string
  *         description: Student ID
  *     responses:
  *       204:

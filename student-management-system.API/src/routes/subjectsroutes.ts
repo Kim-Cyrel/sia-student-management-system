@@ -169,7 +169,7 @@ const subjectsController = new SubjectController();
  *         name: id
  *         required: true
  *         schema:
- *           type: integer
+ *           type: string
  *         description: Subject ID
  *     responses:
  *       200:
@@ -191,7 +191,7 @@ const subjectsController = new SubjectController();
  *         name: id
  *         required: true
  *         schema:
- *           type: integer
+ *           type: string
  *         description: Subject ID
  *     requestBody:
  *       required: true
@@ -226,7 +226,7 @@ const subjectsController = new SubjectController();
  *         name: id
  *         required: true
  *         schema:
- *           type: integer
+ *           type: string
  *         description: Subject ID
  *     responses:
  *       204:
