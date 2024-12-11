@@ -87,7 +87,6 @@ class AuthController {
 
       // Step 4: Generate access token (short-lived)
       const accessToken = jwt.sign({ userId: user._id }, JWT_SECRET, {
-        expiresIn: "5m",
       });
 
       // Step 5: Generate refresh token (long-lived)
