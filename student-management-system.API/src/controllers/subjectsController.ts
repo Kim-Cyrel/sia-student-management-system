@@ -84,12 +84,8 @@ export class SubjectController {
         return;
       }
 
-      // Hash the new password if it's being updated
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(payload.password, salt);
-
       // Prepare update data with hashed password
-      const subjectData: Partial<ISubject> = { ...payload, password: hashedPassword };
+      const subjectData: Partial<ISubject> = { ...payload, };
 
       // Update the subject and get the updated document
       const subject: ISubject | null = await Subject.findByIdAndUpdate(

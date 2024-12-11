@@ -84,12 +84,8 @@ export class EnrollmentController {
         return;
       }
 
-      // Hash the new password if it's being updated
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(payload.password, salt);
-
       // Prepare update data with hashed password
-      const enrollmentData: Partial<IEnrollment> = { ...payload, password: hashedPassword };
+      const enrollmentData: Partial<IEnrollment> = { ...payload, };
 
       // Update the enrollment and get the updated document
       const enrollment: IEnrollment | null = await Enrollment.findByIdAndUpdate(

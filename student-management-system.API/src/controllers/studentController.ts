@@ -82,12 +82,8 @@ export class StudentController { // Change to StudentController
         return;
       }
 
-      // Hash the new password if it's being updated
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(payload.password, salt);
-
       // Prepare update data with hashed password
-      const studentData: Partial<IStudent> = { ...payload, password: hashedPassword }; // Change to IStudent
+      const studentData: Partial<IStudent> = { ...payload, }; // Change to IStudent
 
       // Update the student and get the updated document
       const student: IStudent | null = await Student.findByIdAndUpdate(
