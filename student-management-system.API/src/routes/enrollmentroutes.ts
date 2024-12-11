@@ -17,67 +17,6 @@ const enrollmentController = new EnrollmentController();
 
 /**
  * @swagger
- * components:
- *   schemas:
- *     Enrollment:
- *       type: object
- *       required:
- *         - studentID
- *         - courseID
- *         - enrollmentDate
- *       properties:
- *         enrollmentID:
- *           type: integer
- *           description: The unique identifier for the enrollment
- *         studentID:
- *           type: integer
- *           description: The unique identifier for the student
- *         courseID:
- *           type: integer
- *           description: The unique identifier for the course
- *         enrollmentDate:
- *           type: string
- *           format: date-time
- *           description: The date when the enrollment was made
- *     EnrollmentResponse:
- *       type: object
- *       properties:
- *         enrollmentID:
- *           type: integer
- *           description: The unique identifier for the enrollment
- *         studentID:
- *           type: integer
- *           description: The unique identifier for the student
- *         courseID:
- *           type: integer
- *           description: The unique identifier for the course
- *         enrollmentDate:
- *           type: string
- *           format: date-time
- *           description: The date when the enrollment was made
- *         createdAt:
- *           type: string
- *           format: date-time
- *           description: The date and time when the enrollment was created
- *         updatedAt:
- *           type: string
- *           format: date-time
- *           description: The date and time when the enrollment was last updated
- *     ValidationError:
- *       type: object
- *       properties:
- *         message:
- *           type: string
- *           description: A message describing the validation error
- *         details:
- *           type: array
- *           items:
- *             type: string
- *           description: Detailed validation errors (e.g., field-specific errors)
- */
-
-/**
- * @swagger
  * /api/enrollment:
  *   post:
  *     summary: Create a new enrollment
@@ -102,7 +41,7 @@ const enrollmentController = new EnrollmentController();
  *             schema:
  *               $ref: '#/components/schemas/ValidationError'
  *       409:
- *         description: Enrollment conflict (e.g., duplicate enrollment)
+ *         description: Conflict error (e.g., Enrollment already exists)
  *         content:
  *           application/json:
  *             schema:
@@ -110,7 +49,7 @@ const enrollmentController = new EnrollmentController();
  *               properties:
  *                 message:
  *                   type: string
- *                   example: "Enrollment already exists"
+ *                   example: Enrollment already exists
  *   get:
  *     summary: Get all enrollments
  *     tags: [Enrollment]
@@ -171,7 +110,7 @@ const enrollmentController = new EnrollmentController();
  *         required: true
  *         schema:
  *           type: integer
- *         description: The unique identifier for the enrollment
+ *         description: Enrollment ID
  *     responses:
  *       200:
  *         description: Enrollment details
@@ -192,7 +131,7 @@ const enrollmentController = new EnrollmentController();
  *         required: true
  *         schema:
  *           type: integer
- *         description: The unique identifier for the enrollment
+ *         description: Enrollment ID
  *     requestBody:
  *       required: true
  *       content:
@@ -200,13 +139,11 @@ const enrollmentController = new EnrollmentController();
  *           schema:
  *             type: object
  *             properties:
- *               studentID:
+ *               CourseID:
  *                 type: integer
- *               courseID:
- *                 type: integer
- *               enrollmentDate:
+ *               EnrollmentDate:
  *                 type: string
- *                 format: date-time
+ *                 format: date
  *     responses:
  *       200:
  *         description: Enrollment updated successfully
@@ -227,13 +164,54 @@ const enrollmentController = new EnrollmentController();
  *         required: true
  *         schema:
  *           type: integer
- *         description: The unique identifier for the enrollment
+ *         description: Enrollment ID
  *     responses:
  *       204:
  *         description: Enrollment deleted successfully
  *       404:
  *         description: Enrollment not found
  */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Enrollment:
+ *       type: object
+ *       properties:
+ *         EnrollmentID:
+ *           type: integer
+ *           example: 10123
+ *         StudentID:
+ *           type: integer
+ *           example: 20234
+ *         CourseID:
+ *           type: integer
+ *           example: 30156
+ *         EnrollmentDate:
+ *           type: string
+ *           format: date
+ *           example: "2024-08-15"
+ *     EnrollmentResponse:
+ *       type: object
+ *       properties:
+ *         EnrollmentID:
+ *           type: integer
+ *         StudentID:
+ *           type: integer
+ *         CourseID:
+ *           type: integer
+ *         EnrollmentDate:
+ *           type: string
+ *           format: date
+ *     ValidationError:
+ *       type: object
+ *       properties:
+ *         message:
+ *           type: string
+ *           example: "Validation failed for one or more fields"
+ */
+
 
 
 // Enrollment Routes:
