@@ -10,9 +10,9 @@ const options = {
 
     // Define API metadata
     info: {
-      title: "Web API 101", // Name of your API
+      title: "Web API Student", // Name of your API
       version: "1.0.0", // API version
-      description: "API documentation for Web API 101", // Brief description
+      description: "API documentation for Web API Student", // Brief description
       contact: {
         name: "Kim Cyrel Asidor", // Contact person
         email: "asidorkimcyrel@gmail.com", // Contact email
