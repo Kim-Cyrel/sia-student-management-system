@@ -11,156 +11,12 @@ const studentController = new StudentController();
  * @swagger
  * tags:
  *   name: Student
- *   description: Students endpoints
+ *   description: Student endpoints
  */
 
 /**
  * @swagger
- * components:
- *   schemas:
- *     Student:
- *       type: object
- *       required:
- *         - studentID
- *         - firstName
- *         - lastName
- *         - email
- *         - phone
- *         - dateOfBirth
- *         - courseID
- *         - subjectID
- *         - enrollmentID
- *       properties:
- *         studentID:
- *           type: integer
- *           description: The unique identifier for the student
- *         studentStatus:
- *           type: string
- *           description: The current status of the student (e.g., active, graduated, etc.)
- *         yearLevel:
- *           type: integer
- *           description: The student's current year level (e.g., 1 for Freshman, 2 for Sophomore)
- *         firstName:
- *           type: string
- *           description: The first name of the student
- *         lastName:
- *           type: string
- *           description: The last name of the student
- *         middleName:
- *           type: string
- *           description: The middle name of the student
- *         address:
- *           type: string
- *           description: The student's address
- *         email:
- *           type: string
- *           format: email
- *           description: The email address of the student
- *         phone:
- *           type: number
- *           description: The phone number of the student
- *         dateOfBirth:
- *           type: string
- *           format: date
- *           description: The birthdate of the student
- *         placeOfBirth:
- *           type: string
- *           description: The place where the student was born
- *         sex:
- *           type: string
- *           description: The sex of the student (e.g., Male, Female, Other)
- *         religion:
- *           type: string
- *           description: The religion of the student
- *         nationality:
- *           type: string
- *           description: The nationality of the student
- *         civilStatus:
- *           type: string
- *           description: The civil status of the student (e.g., Single, Married)
- *         occupation:
- *           type: string
- *           description: The occupation of the student (if applicable)
- *         workAddress:
- *           type: string
- *           description: The address of the student's place of work (if applicable)
- *         courseID:
- *           type: integer
- *           description: The unique identifier of the student's course
- *         subjectID:
- *           type: integer
- *           description: The unique identifier of the student's subject
- *         enrollmentID:
- *           type: integer
- *           description: The unique identifier for the student's enrollment
- *     StudentResponse:
- *       type: object
- *       properties:
- *         studentID:
- *           type: integer
- *           description: The unique identifier for the student
- *         studentStatus:
- *           type: string
- *         yearLevel:
- *           type: integer
- *         firstName:
- *           type: string
- *         lastName:
- *           type: string
- *         middleName:
- *           type: string
- *         address:
- *           type: string
- *         email:
- *           type: string
- *           format: email
- *         phone:
- *           type: number
- *         dateOfBirth:
- *           type: string
- *           format: date
- *         placeOfBirth:
- *           type: string
- *         sex:
- *           type: string
- *         religion:
- *           type: string
- *         nationality:
- *           type: string
- *         civilStatus:
- *           type: string
- *         occupation:
- *           type: string
- *         workAddress:
- *           type: string
- *         courseID:
- *           type: integer
- *         subjectID:
- *           type: integer
- *         enrollmentID:
- *           type: integer
- *         createdAt:
- *           type: string
- *           format: date-time
- *         updatedAt:
- *           type: string
- *           format: date-time
- *     ValidationError:
- *       type: object
- *       properties:
- *         message:
- *           type: string
- *           description: A message describing the validation error
- *         details:
- *           type: array
- *           items:
- *             type: string
- *           description: Detailed validation errors (e.g., field-specific errors)
- */
-
-/**
- * @swagger
- * /api/student:
+ * /api/students:
  *   post:
  *     summary: Create a new student
  *     tags: [Student]
@@ -192,7 +48,7 @@ const studentController = new StudentController();
  *               properties:
  *                 message:
  *                   type: string
- *                   example: "Email already exists"
+ *                   example: Email already exists
  *
  *   get:
  *     summary: Get all students
@@ -242,7 +98,7 @@ const studentController = new StudentController();
 
 /**
  * @swagger
- * /api/student/{id}:
+ * /api/students/{id}:
  *   get:
  *     summary: Get student by ID
  *     tags: [Student]
@@ -253,7 +109,7 @@ const studentController = new StudentController();
  *         name: id
  *         required: true
  *         schema:
- *           type: integer
+ *           type: string
  *         description: Student ID
  *     responses:
  *       200:
@@ -284,42 +140,10 @@ const studentController = new StudentController();
  *           schema:
  *             type: object
  *             properties:
- *               firstName:
+ *               FirstName:
  *                 type: string
- *               lastName:
+ *               LastName:
  *                 type: string
- *               middleName:
- *                 type: string
- *               address:
- *                 type: string
- *               email:
- *                 type: string
- *                 format: email
- *               phone:
- *                 type: number
- *               dateOfBirth:
- *                 type: string
- *                 format: date
- *               placeOfBirth:
- *                 type: string
- *               sex:
- *                 type: string
- *               religion:
- *                 type: string
- *               nationality:
- *                 type: string
- *               civilStatus:
- *                 type: string
- *               occupation:
- *                 type: string
- *               workAddress:
- *                 type: string
- *               courseID:
- *                 type: integer
- *               subjectID:
- *                 type: integer
- *               enrollmentID:
- *                 type: integer
  *     responses:
  *       200:
  *         description: Student updated successfully
@@ -348,6 +172,169 @@ const studentController = new StudentController();
  *       404:
  *         description: Student not found
  */
+
+/**
+ * @swagger
+ * /api/students/profile:
+ *   get:
+ *     security:
+ *       - bearerAuth: []
+ *     summary: Get student profile
+ *     tags: [Student]
+ *     responses:
+ *       200:
+ *         description: Student profile retrieved successfully
+ *       401:
+ *         description: Unauthorized - Invalid or missing token
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Student:
+ *       type: object
+ *       required:
+ *         - FirstName
+ *         - LastName
+ *         - Email
+ *         - DateOfBirth
+ *       properties:
+ *         Student_ID:
+ *           type: integer
+ *           description: Unique identifier for the student
+ *           example: 12345
+ *         StudentStatus:
+ *           type: string
+ *           description: Status of the student (e.g., active, inactive)
+ *           example: "active"
+ *         YearLevel:
+ *           type: integer
+ *           description: Year level of the student (e.g., 1 for Freshman)
+ *           example: 2
+ *         FirstName:
+ *           type: string
+ *           maxLength: 50
+ *           description: First name of the student
+ *           example: "John"
+ *         LastName:
+ *           type: string
+ *           maxLength: 50
+ *           description: Last name of the student
+ *           example: "Doe"
+ *         MiddleName:
+ *           type: string
+ *           maxLength: 50
+ *           description: Middle name of the student
+ *           example: "Edward"
+ *         Address:
+ *           type: string
+ *           description: Address of the student
+ *           example: "1234 Elm St, Springfield"
+ *         Email:
+ *           type: string
+ *           format: email
+ *           description: Email address of the student
+ *           example: "john.doe@example.com"
+ *         Phone:
+ *           type: integer
+ *           description: Student's phone number
+ *           example: 9876543210
+ *         DateOfBirth:
+ *           type: string
+ *           format: date
+ *           description: Date of birth of the student
+ *           example: "2000-05-15"
+ *         PlaceOfBirth:
+ *           type: string
+ *           description: Place of birth of the student
+ *           example: "Springfield"
+ *         Sex:
+ *           type: string
+ *           description: Sex of the student (Male, Female)
+ *           example: "Male"
+ *         Religion:
+ *           type: string
+ *           description: Religion of the student
+ *           example: "Christian"
+ *         Nationality:
+ *           type: string
+ *           description: Nationality of the student
+ *           example: "American"
+ *         CivilStatus:
+ *           type: string
+ *           description: Civil status of the student (Single, Married)
+ *           example: "Single"
+ *         Occupation:
+ *           type: string
+ *           description: Occupation of the student
+ *           example: "Student"
+ *         WorkAddress:
+ *           type: string
+ *           description: Address of the student's workplace (if applicable)
+ *           example: "XYZ Corp, 5678 Oak Rd, Springfield"
+ *         Course_ID:
+ *           type: integer
+ *           description: The ID of the course the student is enrolled in
+ *           example: 101
+ *         Subject_ID:
+ *           type: integer
+ *           description: The ID of the subject the student is enrolled in
+ *           example: 301
+ *         Enrollment_ID:
+ *           type: integer
+ *           description: Unique identifier for the student's enrollment record
+ *           example: 2024
+ *     StudentResponse:
+ *       type: object
+ *       properties:
+ *         Student_ID:
+ *           type: integer
+ *           description: Unique identifier for the student
+ *         FirstName:
+ *           type: string
+ *         LastName:
+ *           type: string
+ *         Email:
+ *           type: string
+ *         DateOfBirth:
+ *           type: string
+ *           format: date
+ *         Enrollment_ID:
+ *           type: integer
+ *           description: The student's enrollment ID
+ *         Course_ID:
+ *           type: integer
+ *         Subject_ID:
+ *           type: integer
+ *         StudentStatus:
+ *           type: string
+ *           description: The current status of the student
+ *         YearLevel:
+ *           type: integer
+ *         Phone:
+ *           type: integer
+ *         Nationality:
+ *           type: string
+ *     ValidationError:
+ *       type: object
+ *       properties:
+ *         message:
+ *           type: string
+ *           description: Error message
+ *         details:
+ *           type: array
+ *           items:
+ *             type: object
+ *             properties:
+ *               message:
+ *                 type: string
+ *               path:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ */
+
 
 
 // Student Routes:

@@ -7,10 +7,9 @@ import Joi from "joi"; // Import Joi validation library
  *     Student:
  *       type: object
  *       required:
- *         - Student_ID
+ *         - Email
  *         - FirstName
  *         - LastName
- *         - Email
  *         - DateOfBirth
  *       properties:
  *         Student_ID:
@@ -19,11 +18,11 @@ import Joi from "joi"; // Import Joi validation library
  *           example: 12345
  *         StudentStatus:
  *           type: string
- *           description: Status of the student (e.g., Active, Graduated, etc.)
- *           example: "Active"
+ *           description: The status of the student (e.g., active, inactive)
+ *           example: "active"
  *         YearLevel:
  *           type: integer
- *           description: Year level of the student (e.g., 1 for First Year)
+ *           description: Year level of the student (e.g., 1 for Freshman)
  *           example: 2
  *         FirstName:
  *           type: string
@@ -39,37 +38,37 @@ import Joi from "joi"; // Import Joi validation library
  *           type: string
  *           maxLength: 50
  *           description: Middle name of the student
- *           example: "Michael"
+ *           example: "Edward"
  *         Address:
  *           type: string
- *           description: Home address of the student
- *           example: "1234 Elm St, Springfield, IL"
+ *           description: Residential address of the student
+ *           example: "1234 Elm St, Springfield"
  *         Email:
  *           type: string
  *           format: email
- *           description: Email address of the student
+ *           description: Student's email address
  *           example: "john.doe@example.com"
  *         Phone:
  *           type: integer
- *           description: Phone number of the student
- *           example: 1234567890
+ *           description: Student's phone number
+ *           example: 9876543210
  *         DateOfBirth:
  *           type: string
  *           format: date
- *           description: Date of birth of the student
- *           example: "2000-01-01"
+ *           description: Student's date of birth
+ *           example: "2000-05-15"
  *         PlaceOfBirth:
  *           type: string
  *           description: Place of birth of the student
- *           example: "Springfield, IL"
+ *           example: "Springfield"
  *         Sex:
  *           type: string
- *           description: Gender of the student (e.g., Male, Female, Other)
+ *           description: Gender of the student (e.g., Male, Female)
  *           example: "Male"
  *         Religion:
  *           type: string
  *           description: Religion of the student
- *           example: "Christianity"
+ *           example: "Christian"
  *         Nationality:
  *           type: string
  *           description: Nationality of the student
@@ -84,20 +83,20 @@ import Joi from "joi"; // Import Joi validation library
  *           example: "Student"
  *         WorkAddress:
  *           type: string
- *           description: Work address of the student (if applicable)
- *           example: "XYZ Corporation, 123 Business Blvd"
+ *           description: Address of the student's workplace (if applicable)
+ *           example: "XYZ Corp, 5678 Oak Rd, Springfield"
  *         Course_ID:
  *           type: integer
- *           description: Unique identifier for the student's course
+ *           description: The ID of the course the student is enrolled in
  *           example: 101
  *         Subject_ID:
  *           type: integer
- *           description: Unique identifier for the subject the student is enrolled in
- *           example: 202
+ *           description: The ID of the subject the student is enrolled in
+ *           example: 301
  *         Enrollment_ID:
  *           type: integer
- *           description: Unique identifier for the student's enrollment
- *           example: 56789
+ *           description: The ID of the student's enrollment record
+ *           example: 2024
  *     StudentResponse:
  *       type: object
  *       properties:
@@ -110,14 +109,25 @@ import Joi from "joi"; // Import Joi validation library
  *           type: string
  *         Email:
  *           type: string
- *           format: email
+ *         DateOfBirth:
+ *           type: string
+ *           format: date
  *         Enrollment_ID:
  *           type: integer
+ *           description: The student's enrollment ID
  *         Course_ID:
  *           type: integer
- *         EnrollmentDate:
+ *         Subject_ID:
+ *           type: integer
+ *         StudentStatus:
  *           type: string
- *           format: date-time
+ *           description: Current status of the student
+ *         YearLevel:
+ *           type: integer
+ *         Phone:
+ *           type: integer
+ *         Nationality:
+ *           type: string
  *     ValidationError:
  *       type: object
  *       properties:
@@ -136,7 +146,6 @@ import Joi from "joi"; // Import Joi validation library
  *                 items:
  *                   type: string
  */
-
 
 // Define a validation schema for student data
 const StudentValidationSchema = Joi.object({
