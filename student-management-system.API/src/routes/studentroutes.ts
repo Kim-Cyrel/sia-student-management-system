@@ -16,7 +16,7 @@ const studentController = new StudentController();
 
 /**
  * @swagger
- * /api/students:
+ * /api/student:
  *   post:
  *     summary: Create a new student
  *     tags: [Student]
@@ -98,7 +98,7 @@ const studentController = new StudentController();
 
 /**
  * @swagger
- * /api/students/{id}:
+ * /api/student/{id}:
  *   get:
  *     summary: Get student by ID
  *     tags: [Student]
@@ -175,7 +175,7 @@ const studentController = new StudentController();
 
 /**
  * @swagger
- * /api/students/profile:
+ * /api/student/profile:
  *   get:
  *     security:
  *       - bearerAuth: []
