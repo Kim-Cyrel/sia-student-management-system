@@ -1,5 +1,143 @@
 import Joi from "joi"; // Import Joi validation library
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Student:
+ *       type: object
+ *       required:
+ *         - Student_ID
+ *         - FirstName
+ *         - LastName
+ *         - Email
+ *         - DateOfBirth
+ *       properties:
+ *         Student_ID:
+ *           type: integer
+ *           description: Unique identifier for the student
+ *           example: 12345
+ *         StudentStatus:
+ *           type: string
+ *           description: Status of the student (e.g., Active, Graduated, etc.)
+ *           example: "Active"
+ *         YearLevel:
+ *           type: integer
+ *           description: Year level of the student (e.g., 1 for First Year)
+ *           example: 2
+ *         FirstName:
+ *           type: string
+ *           maxLength: 50
+ *           description: First name of the student
+ *           example: "John"
+ *         LastName:
+ *           type: string
+ *           maxLength: 50
+ *           description: Last name of the student
+ *           example: "Doe"
+ *         MiddleName:
+ *           type: string
+ *           maxLength: 50
+ *           description: Middle name of the student
+ *           example: "Michael"
+ *         Address:
+ *           type: string
+ *           description: Home address of the student
+ *           example: "1234 Elm St, Springfield, IL"
+ *         Email:
+ *           type: string
+ *           format: email
+ *           description: Email address of the student
+ *           example: "john.doe@example.com"
+ *         Phone:
+ *           type: integer
+ *           description: Phone number of the student
+ *           example: 1234567890
+ *         DateOfBirth:
+ *           type: string
+ *           format: date
+ *           description: Date of birth of the student
+ *           example: "2000-01-01"
+ *         PlaceOfBirth:
+ *           type: string
+ *           description: Place of birth of the student
+ *           example: "Springfield, IL"
+ *         Sex:
+ *           type: string
+ *           description: Gender of the student (e.g., Male, Female, Other)
+ *           example: "Male"
+ *         Religion:
+ *           type: string
+ *           description: Religion of the student
+ *           example: "Christianity"
+ *         Nationality:
+ *           type: string
+ *           description: Nationality of the student
+ *           example: "American"
+ *         CivilStatus:
+ *           type: string
+ *           description: Civil status of the student (e.g., Single, Married)
+ *           example: "Single"
+ *         Occupation:
+ *           type: string
+ *           description: Occupation of the student (if applicable)
+ *           example: "Student"
+ *         WorkAddress:
+ *           type: string
+ *           description: Work address of the student (if applicable)
+ *           example: "XYZ Corporation, 123 Business Blvd"
+ *         Course_ID:
+ *           type: integer
+ *           description: Unique identifier for the student's course
+ *           example: 101
+ *         Subject_ID:
+ *           type: integer
+ *           description: Unique identifier for the subject the student is enrolled in
+ *           example: 202
+ *         Enrollment_ID:
+ *           type: integer
+ *           description: Unique identifier for the student's enrollment
+ *           example: 56789
+ *     StudentResponse:
+ *       type: object
+ *       properties:
+ *         Student_ID:
+ *           type: integer
+ *           description: Unique identifier for the student
+ *         FirstName:
+ *           type: string
+ *         LastName:
+ *           type: string
+ *         Email:
+ *           type: string
+ *           format: email
+ *         Enrollment_ID:
+ *           type: integer
+ *         Course_ID:
+ *           type: integer
+ *         EnrollmentDate:
+ *           type: string
+ *           format: date-time
+ *     ValidationError:
+ *       type: object
+ *       properties:
+ *         message:
+ *           type: string
+ *           description: Error message
+ *         details:
+ *           type: array
+ *           items:
+ *             type: object
+ *             properties:
+ *               message:
+ *                 type: string
+ *               path:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ */
+
+
 // Define a validation schema for student data
 const StudentValidationSchema = Joi.object({
   // StudentID validation
